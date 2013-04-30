@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  script(src='/seajs-2.0.0/sea.js')
+  script
+    seajs.config({base: '/'})
+    seajs.on('fetch', function (data) {
+        data.requestUri = data.uri.replace(/@/g, '/')
+    })
+    seajs.use('./basestone/0.0.1/basestone')
